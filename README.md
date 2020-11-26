@@ -3,3 +3,5 @@
 
 
 [【Python】Googleの検索結果をスクレイピングできない時の対処法](https://katsuhiroblog.com/google-search-result-scraping/)
+
+[Python(パイソン)でGoogleの検索結果をスクレイピングする【コピペOK】](https://icedog-works.com/python-scraping)
