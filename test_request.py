@@ -29,38 +29,38 @@ def test():
             ranks = []
             keywords = re.split('\n', keywords)
 
+
+            def get_search_html(keyword):
+                # start = "&start=" + str(page * 10) # 次ページstart=10
+                # https://www.google.co.jp/search?hl=ja&num=100&q=%E8%83%BD%E7%99%BB%E5%8D%B0%E5%88%B7
+                url = 'https://www.google.co.jp/search?hl=ja&num=50&q=' + quote(keyword)
+                # url = 'https://www.google.com/search?q=' + quote(keyword) + start 
+                
+                headers = {'User-Agent': user_agent}
+
+                req = urllib.request.Request(url, headers=headers)
+
+                with urllib.request.urlopen(req) as res:
+                    body = res.read()
+                    return body
+
+
+            def get_page_rank(soup):
+                res_rank = 1
+
+                for a_tag in soup.find_all('a'):
+                    h3_tag = a_tag.select("h3")
+
+                    if len(h3_tag) > 0:
+                        if a_tag.get('href').startswith(target) == True:
+                            # print(h3_tag[0].get_text())
+                            # print(a_tag.get('href'))
+                            return res_rank
+
+                        res_rank += 1
+                return -1
+
             for keyword in keywords:
-
-                def get_search_html(keyword):
-                    # start = "&start=" + str(page * 10) # 次ページstart=10
-                    # https://www.google.co.jp/search?hl=ja&num=100&q=%E8%83%BD%E7%99%BB%E5%8D%B0%E5%88%B7
-                    url = 'https://www.google.co.jp/search?hl=ja&num=50&q=' + quote(keyword)
-                    # url = 'https://www.google.com/search?q=' + quote(keyword) + start 
-                    
-                    headers = {'User-Agent': user_agent}
-
-                    req = urllib.request.Request(url, headers=headers)
-
-                    with urllib.request.urlopen(req) as res:
-                        body = res.read()
-                        return body
-
-
-                def get_page_rank(soup):
-                    res_rank = 1
-
-                    for a_tag in soup.find_all('a'):
-                        h3_tag = a_tag.select("h3")
-
-                        if len(h3_tag) > 0:
-                            if a_tag.get('href').startswith(target) == True:
-                                # print(h3_tag[0].get_text())
-                                # print(a_tag.get('href'))
-                                return res_rank
-
-                            res_rank += 1
-                    return -1
-
                 rank = -1
 
                 #for page in range(max_page):
