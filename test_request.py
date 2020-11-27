@@ -22,7 +22,6 @@ def index():
 def test():
     try:
         if request.method == 'POST':
-            # return request.form['keyword']
             keywords = request.form['keyword']
             keynote = keywords
             target = request.form['url']
@@ -34,6 +33,8 @@ def test():
 
                 def get_search_html(keyword, page):
                     start = "&start=" + str(page * 10) # 次ページstart=10
+                    #https://www.google.co.jp/search?hl=ja&num=100&q=%E8%83%BD%E7%99%BB%E5%8D%B0%E5%88%B7
+                    # url = 'https://www.google.co.jp/search?hl=ja&num=50&q=' + quote(keyword)
                     url = 'https://www.google.com/search?q=' + quote(keyword) + start 
                     
                     headers = {'User-Agent': user_agent}
@@ -88,7 +89,7 @@ def test():
 
             return render_template('ranks.html', ranks=ranks, keynote=keynote, target=target)
         else:
-            return abort(100)
+            return abort(400)
     except Exception as e:
         return str(e)
 
