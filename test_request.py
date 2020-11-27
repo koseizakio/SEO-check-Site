@@ -22,7 +22,6 @@ def index():
 def test():
     try:
         if request.method == 'POST':
-            # return request.form['keyword']
             keywords = request.form['keyword']
             keynote = keywords
             target = request.form['url']
@@ -32,9 +31,11 @@ def test():
 
             for keyword in keywords:
 
-                def get_search_html(keyword, page):
-                    start = "&start=" + str(page * 10) # 次ページstart=10
-                    url = 'https://www.google.com/search?q=' + quote(keyword) + start 
+                def get_search_html(keyword):
+                    # start = "&start=" + str(page * 10) # 次ページstart=10
+                    # https://www.google.co.jp/search?hl=ja&num=100&q=%E8%83%BD%E7%99%BB%E5%8D%B0%E5%88%B7
+                    url = 'https://www.google.co.jp/search?hl=ja&num=50&q=' + quote(keyword)
+                    # url = 'https://www.google.com/search?q=' + quote(keyword) + start 
                     
                     headers = {'User-Agent': user_agent}
 
@@ -45,7 +46,7 @@ def test():
                         return body
 
 
-                def get_page_rank(soup, page):
+                def get_page_rank(soup):
                     res_rank = 1
 
                     for a_tag in soup.find_all('a'):
@@ -55,29 +56,23 @@ def test():
                             if a_tag.get('href').startswith(target) == True:
                                 # print(h3_tag[0].get_text())
                                 # print(a_tag.get('href'))
-                                return res_rank + page * 10
+                                return res_rank
 
                             res_rank += 1
                     return -1
 
                 rank = -1
-                max_page = 5
 
-                for page in range(max_page):
-                    html = get_search_html(keyword, page)
-                    soup = BeautifulSoup(html, 'html.parser')
+                #for page in range(max_page):
+                html = get_search_html(keyword)
+                soup = BeautifulSoup(html, 'html.parser')
 
-                    title_text = soup.find('title').get_text()
-                    print(title_text)
-                    rank = get_page_rank(soup, page)
+                title_text = soup.find('title').get_text()
+                print(title_text)
+                rank = get_page_rank(soup)
 
-                    page += 1
-                    if rank != -1:
-                        break
-
-                    # time.sleep(1) # アクセス制限対策
+                # time.sleep(1) # アクセス制限対策
                     
-
                 if rank != -1:
                     ranks.append(rank)
                 else:
@@ -88,7 +83,7 @@ def test():
 
             return render_template('ranks.html', ranks=ranks, keynote=keynote, target=target)
         else:
-            return abort(100)
+            return abort(400)
     except Exception as e:
         return str(e)
 
