@@ -3,6 +3,7 @@ import sys
 import urllib.request
 from urllib.parse import quote
 from bs4 import BeautifulSoup
+import datetime
 import time
 import re
 
@@ -29,6 +30,8 @@ def test():
             ranks = []
             keywords = re.split('\n', keywords)
 
+            date1 = datetime.datetime.now()
+            
 
             def get_search_html(keyword):
                 # start = "&start=" + str(page * 10) # 次ページstart=10
@@ -71,7 +74,8 @@ def test():
                 print(title_text)
                 rank = get_page_rank(soup)
 
-                # time.sleep(1) # アクセス制限対策
+                # アクセス制限対策(1-3)
+                time.sleep(3) 
                     
                 if rank != -1:
                     ranks.append(rank)
@@ -80,6 +84,9 @@ def test():
                     ranks.append(rank)
                 print(ranks)
 
+            date2 = datetime.datetime.now()
+            date2 = date2 - date1
+            print(date2.total_seconds())
 
             return render_template('ranks.html', ranks=ranks, keynote=keynote, target=target)
         else:
