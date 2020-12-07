@@ -29,9 +29,7 @@ def test():
             user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36"
             ranks = []
             keywords = re.split('\n', keywords)
-
-            date1 = datetime.datetime.now()
-            
+            start2 = time.time()
 
             def get_search_html(keyword):
                 # start = "&start=" + str(page * 10) # 次ページstart=10
@@ -51,7 +49,11 @@ def test():
             def get_page_rank(soup):
                 res_rank = 1
 
+                # if re.search(target,soup.find_all('a').text) == None:
+                #     return -1
+                    
                 for a_tag in soup.find_all('a'):
+
                     h3_tag = a_tag.select("h3")
 
                     if len(h3_tag) > 0:
@@ -65,17 +67,15 @@ def test():
 
             for keyword in keywords:
                 rank = -1
-
+                start = time.time()
                 #for page in range(max_page):
                 html = get_search_html(keyword)
                 soup = BeautifulSoup(html, 'html.parser')
-
+                    
                 title_text = soup.find('title').get_text()
                 print(title_text)
                 rank = get_page_rank(soup)
 
-                # アクセス制限対策(1-3)
-                time.sleep(3) 
                     
                 if rank != -1:
                     ranks.append(rank)
@@ -84,15 +84,26 @@ def test():
                     ranks.append(rank)
                 print(ranks)
 
-            date2 = datetime.datetime.now()
-            date2 = date2 - date1
-            print(date2.total_seconds())
+                # アクセス制限対策(1-3)
+                # 明日は、10秒くらいあける
+                time.sleep(4)
+                elapsed_time = time.time() - start
+                print(elapsed_time)
+
+            elapsed_time2 = time.time() - start2
+            print(elapsed_time2)
+
 
             return render_template('ranks.html', ranks=ranks, keynote=keynote, target=target)
         else:
             return abort(400)
     except Exception as e:
-        return str(e)
+        return render_template('error.html', error=e)
+
+@app.errorhandler(404)
+def error_404(e):
+    return render_template('error.html', error=e)
+
 
 if __name__ == '__main__':
     app.run()
