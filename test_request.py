@@ -45,7 +45,6 @@ def test():
                     body = res.read()
                     return body
 
-
             def get_page_rank(soup):
                 res_rank = 1
 
@@ -75,7 +74,6 @@ def test():
                 title_text = soup.find('title').get_text()
                 print(title_text)
                 rank = get_page_rank(soup)
-
                     
                 if rank != -1:
                     ranks.append(rank)
@@ -86,13 +84,12 @@ def test():
 
                 # アクセス制限対策(1-3)
                 # 明日は、10秒くらいあける
-                time.sleep(4)
+                time.sleep(3)
                 elapsed_time = time.time() - start
                 print(elapsed_time)
 
             elapsed_time2 = time.time() - start2
             print(elapsed_time2)
-
 
             return render_template('ranks.html', ranks=ranks, keynote=keynote, target=target)
         else:
@@ -104,6 +101,5 @@ def test():
 def error_404(e):
     return render_template('error.html', error=e)
 
-
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, host='0.0.0.0', port=5000)
