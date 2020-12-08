@@ -14,12 +14,12 @@
 
         <div class="form-group">
           <label for="url">検索対象URL</label>
-          <input class="form-control" type="url" name="url" id="url">
+          <input class="form-control" type="url" name="url" id="url" required="required">
         </div>
 
         <div class="form-group">
           <label for="keyword">キーワード</label>
-          <textarea class="form-control" name="keyword" id="keyword" rows="10"></textarea>
+          <textarea class="form-control" name="keyword" id="keyword" type="text" rows="10" required="required"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary" formmethod="POST">チェックする</button>
@@ -35,5 +35,32 @@
   </div><!-- /.main -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <!-- <script>
+ 
+    // 入力できる行数の最大値
+    let MAX_LINE_NUM = 5;
+   
+    // テキストエリアの取得
+    let textarea = document.getElementById("keyword");
+   
+    // 入力ごとに呼び出されるイベントを設定
+    textarea.addEventListener("input", function() {
+   
+      // 各行を配列の要素に分ける
+      let lines = textarea.value.split("\n");
+   
+      // 入力行数が制限を超えた場合
+      if (lines.length > MAX_LINE_NUM) {
+   
+        var result = "";
+   
+        for (var i = 0; i < MAX_LINE_NUM; i++) {
+          result += lines[i] + "\n";
+        }
+        alert('キーワード入力は、5行までです。');
+        textarea.value = result;
+      }
+    }, false);
+  </script> -->
 </body>
 </html>
