@@ -84,7 +84,7 @@ def test():
 
                 # アクセス制限対策(1-3)
                 # 明日は、10秒くらいあける
-                time.sleep(3)
+                time.sleep(5)
                 elapsed_time = time.time() - start
                 print(elapsed_time)
 
