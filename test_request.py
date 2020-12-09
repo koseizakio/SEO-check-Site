@@ -84,7 +84,7 @@ def test():
 
                 # アクセス制限対策(1-3)
                 # 明日は、10秒くらいあける
-                time.sleep(5)
+                time.sleep(3)
                 elapsed_time = time.time() - start
                 print(elapsed_time)
 
@@ -102,4 +102,4 @@ def error_404(e):
     return render_template('error.html', error=e)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run()
