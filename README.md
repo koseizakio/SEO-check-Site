@@ -1,7 +1,7 @@
 # SEO-check-Site
 
 ### 2020.12.09
-[Python3.6 インストール on Amazon Linux AMI](https://qiita.com/hitobb/items/62bcd1c4995d996d4652)
+
 
 #### Amazon Linux Python3 インストール方法
 
@@ -32,7 +32,9 @@ pip3 install flask beautifulsoup4
 git clone https://github.com/koseizakio/SEO-check-Site.git
 ```
 
-### 2020.12.03
+### 文献
+[Python3.6 インストール on Amazon Linux AMI](https://qiita.com/hitobb/items/62bcd1c4995d996d4652)
+
 Google検索サイトから「過剰リクエストエラー」を出さないためには、Google Custom Search APIを使って検索順位のチェックをする必要があるそうです。
 
 [Google CSA](https://qiita.com/kingpanda/items/54043eddcf09699ceabc)
@@ -41,9 +43,6 @@ Google検索サイトから「過剰リクエストエラー」を出さない�
 
 https://qiita.com/minodisk/items/934903a937813fcf1e30
 
-
-
-### 2020.11.30
 PythonでGoogle検索順位スクレイピング／BeautifulSoupの使い方
 
 https://101010.fun/programming/python-beautifulsoup-googlerank.html
