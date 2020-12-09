@@ -102,4 +102,4 @@ def error_404(e):
     return render_template('error.html', error=e)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0',port='5000')
