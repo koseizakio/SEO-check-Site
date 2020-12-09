@@ -1,4 +1,6 @@
 # SEO-check-Site
+
+### 2020.12.03
 Google検索サイトから「過剰リクエストエラー」を出さないためには、Google Custom Search APIを使って検索順位のチェックをする必要があるそうです。
 
 [Google CSA](https://qiita.com/kingpanda/items/54043eddcf09699ceabc)
