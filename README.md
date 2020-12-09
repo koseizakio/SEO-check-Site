@@ -13,6 +13,19 @@ sudo yum -y install python36-devel python36-libs python36-setuptools
 sudo python3 -m ensurepip --upgrade
 ```
 
+#### git インストール
+
+```
+sudo yum install git 
+```
+
+
+#### pip3 install
+
+```
+pip3 install flask beautifulsoup4
+```
+
 ### 2020.12.03
 Google検索サイトから「過剰リクエストエラー」を出さないためには、Google Custom Search APIを使って検索順位のチェックをする必要があるそうです。
 
