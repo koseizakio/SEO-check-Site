@@ -3,8 +3,14 @@
 ### 2020.12.09
 [Python3.6 インストール on Amazon Linux AMI](https://qiita.com/hitobb/items/62bcd1c4995d996d4652)
 
+#### Amazon Linux Python3 インストール方法
+
 ```
-aaa
+sudo yum -y install python36-devel python36-libs python36-setuptools 
+```
+
+```
+sudo python3 -m ensurepip --upgrade
 ```
 
 ### 2020.12.03
