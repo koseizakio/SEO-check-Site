@@ -29,7 +29,7 @@ pip3 install flask beautifulsoup4
 #### githubからソースコードをダウンロード
 
 ```
-git clone
+git clone https://github.com/koseizakio/SEO-check-Site.git
 ```
 
 ### 2020.12.03
