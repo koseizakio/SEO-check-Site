@@ -40,8 +40,6 @@ git clone https://github.com/koseizakio/SEO-check-Site.git
 ### 文献
 [Python3.6 インストール on Amazon Linux AMI](https://qiita.com/hitobb/items/62bcd1c4995d996d4652)
 
-Google検索サイトから「過剰リクエストエラー」を出さないためには、Google Custom Search APIを使って検索順位のチェックをする必要があるそうです。
-
 [Google CSA](https://qiita.com/kingpanda/items/54043eddcf09699ceabc)
 
 また、リクエスト数にも上限があり、1日あたりのリクエスト数が1000リクエスト数/日が上限です。
