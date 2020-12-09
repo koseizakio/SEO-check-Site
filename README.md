@@ -8,6 +8,8 @@ Google検索サイトから「過剰リクエストエラー」を出さない�
 https://qiita.com/minodisk/items/934903a937813fcf1e30
 
 
+
+### 2020.11.30
 PythonでGoogle検索順位スクレイピング／BeautifulSoupの使い方
 
 https://101010.fun/programming/python-beautifulsoup-googlerank.html
