@@ -1,8 +1,8 @@
 # SEO-check-Site
 
 ### 2020.12.09
-Python3.6 インストール on Amazon Linux AMI
-https://qiita.com/hitobb/items/62bcd1c4995d996d4652
+[Python3.6 インストール on Amazon Linux AMI]
+(https://qiita.com/hitobb/items/62bcd1c4995d996d4652)
 
 ### 2020.12.03
 Google検索サイトから「過剰リクエストエラー」を出さないためには、Google Custom Search APIを使って検索順位のチェックをする必要があるそうです。
