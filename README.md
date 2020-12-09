@@ -26,6 +26,12 @@ sudo yum install git
 pip3 install flask beautifulsoup4
 ```
 
+#### githubからソースコードをダウンロード
+
+```
+git clone
+```
+
 ### 2020.12.03
 Google検索サイトから「過剰リクエストエラー」を出さないためには、Google Custom Search APIを使って検索順位のチェックをする必要があるそうです。
 
