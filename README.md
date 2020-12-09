@@ -3,6 +3,11 @@
 ### 2020.12.09
 
 
+#### Amazon Linux update
+```
+sudo yum update
+```
+
 #### Amazon Linux Python3 インストール方法
 
 ```
