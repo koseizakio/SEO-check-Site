@@ -11,6 +11,7 @@ app = Flask(__name__)
 
 #ランキング格納
 ranks = []
+text = None
 
 #最初のスタート
 @app.route('/')
@@ -28,6 +29,7 @@ def test():
             user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36"
             ranks = []
             keywords = re.split('\n', keywords)
+            count = 0
             start2 = time.time()
 
             def get_search_html(keyword):
@@ -83,7 +85,10 @@ def test():
 
                 # アクセス制限対策(1-3)
                 # 明日は、10秒くらいあける
-                time.sleep(25)
+                time.sleep(3)
+                count = count + 1
+                if count == 40:
+                    time.sleep(3600)
                 elapsed_time = time.time() - start
                 print(elapsed_time)
 
@@ -101,4 +106,4 @@ def error_404(e):
     return render_template('error.html', error=e)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0' ,port=5000)
